@@ -10,7 +10,7 @@ export class Player {
 
     update(input) {
         if (input.includes('ArrowDown')) this.y++; // if the input array contains the arrow down key, move down
-        if (input.includes('ArrowUp')) this.y--; // up key, move down
+        if (input.includes('ArrowUp')) this.y--; // up key, move up
         if (input.includes('ArrowLeft')) this.x--; // etc
         if (input.includes('ArrowRight')) this.x++; // etc...
         
@@ -19,10 +19,6 @@ export class Player {
         if (this.x > this.game.width - this.width) this.x = this.game.width - this.width;
         if (this.y < 0) this.y = 0;
         if (this.y > this.game.height - this.height) this.y = this.game.height - this.height;
-        if (input != []) {
-            // when the player first moves, start the ambient noise
-            this.game.ambientNoise.play();
-        }
     }
 
     draw(context){

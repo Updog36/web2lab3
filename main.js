@@ -54,6 +54,11 @@ window.addEventListener("load", function () {
       // update the stars
       this.stars.forEach((star) => star.update(game));
 
+      // update the ambient noise to satisfy google update about autoplaying audio
+      if (this.input.keys.length > 0) {
+        this.ambientNoise.play();
+      }
+
       // every 10 seconds increase the max number of enemies
       if (this.timer.seconds % 10 === 0 && this.timer.milliseconds === 0) {
         this.maxEnemies++;
