@@ -1,8 +1,8 @@
 export class Player {
     constructor(game) {
         this.game = game; // store the game
-        this.width = 50; // set the width 
-        this.height = 50; // and height
+        this.width = 30; // set the width 
+        this.height = 30; // and height
         this.x = this.game.width / 2; // set the starting position to the center of the screen
         this.y = this.game.height / 2;
         this.image = document.getElementById('player'); // load the preloaded image from the html
