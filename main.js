@@ -2,6 +2,7 @@ import { Player } from "./player.js";
 import { InputHandler } from "./input.js";
 import { Asteroid } from "./asteroid.js";
 import { Timer } from "./timer.js";
+import { Stars } from "./stars.js";
 
 window.addEventListener("load", function () {
   const canvas = document.getElementById("canvas1");
@@ -19,6 +20,11 @@ window.addEventListener("load", function () {
       this.width = width;
       this.height = height;
       this.player = new Player(this); // pass the game object to the player instance
+      this.stars = []; // create an empty array for the stars
+      this.maxStars = 100; // set the max number of stars
+      for (let i = 0; i < this.maxStars; i++) {
+        this.stars.push(new Stars(this));
+      }
       this.input = new InputHandler(); // create a new input handler
       this.enemies = []; // create an empty array for the enemies
       this.maxEnemies = 25; // set the max number of enemies (this will increase over time)
@@ -44,6 +50,10 @@ window.addEventListener("load", function () {
         // if there are less than the max number of enemies, add more
         this.enemies.push(new Asteroid(this));
       }
+
+      // update the stars
+      this.stars.forEach((star) => star.update());
+
       // every 10 seconds increase the max number of enemies
       if (this.timer.seconds % 10 === 0 && this.timer.milliseconds === 0) {
         this.maxEnemies++;
@@ -106,6 +116,7 @@ window.addEventListener("load", function () {
       this.player.draw(context);
       this.enemies.forEach((enemy) => enemy.draw(context));
       this.timer.draw(context);
+      this.stars.forEach((star) => star.draw(context));
     }
   }
 
