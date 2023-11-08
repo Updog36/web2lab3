@@ -20,12 +20,12 @@ window.addEventListener("load", function () {
       this.width = width;
       this.height = height;
       this.player = new Player(this); // pass the game object to the player instance
-      this.stars = []; // create an empty array for the stars
-      this.maxStars = 100; // set the max number of stars
+      this.input = new InputHandler(); // create a new input handler
+      this.stars = [];
+      this.maxStars = 100;
       for (let i = 0; i < this.maxStars; i++) {
         this.stars.push(new Stars(this));
-      }
-      this.input = new InputHandler(); // create a new input handler
+      };
       this.enemies = []; // create an empty array for the enemies
       this.maxEnemies = 25; // set the max number of enemies (this will increase over time)
       for (let i = 0; i < this.maxEnemies; i++) {
@@ -52,7 +52,7 @@ window.addEventListener("load", function () {
       }
 
       // update the stars
-      this.stars.forEach((star) => star.update());
+      this.stars.forEach((star) => star.update(game));
 
       // every 10 seconds increase the max number of enemies
       if (this.timer.seconds % 10 === 0 && this.timer.milliseconds === 0) {
@@ -113,10 +113,10 @@ window.addEventListener("load", function () {
     }
     // draw everything
     draw(context) {
+      this.stars.forEach((star) => star.draw(context));
       this.player.draw(context);
       this.enemies.forEach((enemy) => enemy.draw(context));
-      this.timer.draw(context);
-      this.stars.forEach((star) => star.draw(context));
+      this.timer.draw(context); 
     }
   }
 
