@@ -5,6 +5,7 @@
 }
 
 #canvas1 {
+    border: 3px solid white;
     background-color: black;
     position: absolute;
     /* full screen canvas */
