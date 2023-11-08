@@ -33,10 +33,10 @@ window.addEventListener("load", function () {
         this.enemies.push(new Asteroid(this));
       }
       this.timer = new Timer(); // create a new timer
-      this.ambientNoise = new Audio("assets/ambient-noise.wav"); // load the ambient noise
+      this.ambientNoise = new Audio("../assets/ambient-noise.wav"); // load the ambient noise
       this.ambientNoise.volume = 0.2; // set the volume
       this.ambientNoise.loop = true; // loop the audio (jako loš loop ali nemam vremena baš naći bolji način žao mi je ali fora je svejedno valjda)
-      this.crashSound = new Audio("assets/8-bit-explosion.wav"); // collision sound (DOSTA GLASNO)
+      this.crashSound = new Audio("../assets/8-bit-explosion.wav"); // collision sound (DOSTA GLASNO)
       this.crashSound.volume = 0.05; // zato ga smanjujem baš je kritično
       this.dead = false; // dead flag for disabling input and resetting the game
     }
