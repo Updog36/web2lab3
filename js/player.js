@@ -6,13 +6,14 @@ export class Player {
         this.x = this.game.width / 2; // set the starting position to the center of the screen
         this.y = this.game.height / 2;
         this.image = document.getElementById('player'); // load the preloaded image from the html
+        this.speed = 2; // set the speed of the player
     }
 
     update(input) {
-        if (input.includes('ArrowDown')) this.y++; // if the input array contains the arrow down key, move down
-        if (input.includes('ArrowUp')) this.y--; // up key, move up
-        if (input.includes('ArrowLeft')) this.x--; // etc
-        if (input.includes('ArrowRight')) this.x++; // etc...
+        if (input.includes('ArrowDown')) this.y += this.speed; // if the input array contains the arrow down key, move down
+        if (input.includes('ArrowUp')) this.y -= this.speed; // up key, move up
+        if (input.includes('ArrowLeft')) this.x -= this.speed; // etc
+        if (input.includes('ArrowRight')) this.x += this.speed; // etc...
         
         // player can't go out of bounds
         if (this.x < 0) this.x = 0;

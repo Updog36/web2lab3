@@ -27,7 +27,7 @@ window.addEventListener("load", function () {
         this.stars.push(new Stars(this));
       };
       this.enemies = []; // create an empty array for the enemies
-      this.maxEnemies = 25; // set the max number of enemies (this will increase over time)
+      this.maxEnemies = 50; // set the max number of enemies (this will increase over time)
       for (let i = 0; i < this.maxEnemies; i++) {
         // create the enemies
         this.enemies.push(new Asteroid(this));
@@ -59,8 +59,8 @@ window.addEventListener("load", function () {
         this.ambientNoise.play();
       }
 
-      // every 10 seconds increase the max number of enemies
-      if (this.timer.seconds % 10 === 0 && this.timer.milliseconds === 0) {
+      // every 5 seconds increase the max number of enemies
+      if (this.timer.seconds % 5 === 0 && this.timer.milliseconds === 0) {
         this.maxEnemies++;
       }
 
